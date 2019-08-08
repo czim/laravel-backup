@@ -38,6 +38,6 @@ class BackupJobFactory
             return $sourceConfig['databases'];
         }
 
-        return $generatorClass();
+        return (new $generatorClass)();
     }
 }
