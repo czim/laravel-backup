@@ -2,6 +2,7 @@
 
 namespace Spatie\Backup\Tasks\Backup;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Spatie\Backup\BackupDestination\BackupDestinationFactory;
 
@@ -31,7 +32,7 @@ class BackupJobFactory
 
     protected static function getSourceDatabaseConnections(array $sourceConfig): array
     {
-        $generatorClass = $sourceConfig['database-generator'];
+        $generatorClass = Arr::get($sourceConfig, 'database_generator');
 
         if ($generatorClass === null) {
             return $sourceConfig['databases'];
